@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :public do
     root to: 'homes#top'
     get 'about' => "homes#about"
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   end
 
 

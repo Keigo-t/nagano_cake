@@ -1,7 +1,4 @@
-class Admin::CustomersController < ApplicationController
-  def index
-    @customer = Customer.all
-  end
+class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
@@ -14,7 +11,7 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
-    redirect_to admin_top_path
+    redirect_to public_root_path
   end
 
   private

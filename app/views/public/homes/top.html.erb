@@ -6,6 +6,4 @@
 <h1>新着商品</h1>
 
 <!--とりあえず-->
-<%= link_to public_root_path, method: :delete do %>
-Log out
-<% end %>
+<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>

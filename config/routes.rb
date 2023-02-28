@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   namespace :public do
     root to: 'homes#top'
     get 'about' => "homes#about"
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :customers, only: [:show, :edit, :update]
+    resources :items, only: [:index, :show]
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
 
 
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top'
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    get 'show' => 'orders/show'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

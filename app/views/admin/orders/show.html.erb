@@ -1,0 +1,16 @@
+<h2>注文履歴</h2>
+
+<p>購入者</p>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
+
+<p>注文日</p>
+<%= @order.created_at %>
+
+<p>配送先</p>
+
+<p>支払方法</p>
+<p><%= @order.payment_method %></p>
+
+<p>商品名</p>
+
+

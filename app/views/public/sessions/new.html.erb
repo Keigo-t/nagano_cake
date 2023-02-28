@@ -2,6 +2,8 @@
 
 <h3>会員の方はこちらからログイン</h3>
 
+<%= alert %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <span><%= f.label :email, "メールアドレス" %></span>

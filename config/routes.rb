@@ -4,13 +4,13 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  namespace :public do
+  scope module: :public do
     root to: 'homes#top'
     get 'about' => "homes#about"
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
-    get '/customers/:id/unsubscribe' => 'customers#unsubscribe'
-    patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
 
 

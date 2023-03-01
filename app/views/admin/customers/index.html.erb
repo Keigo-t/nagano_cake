@@ -1,18 +1,22 @@
-<h1>会員一覧</h1>
+<h4>会員一覧</h4>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-light">
     <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
+      <th scope="row">会員ID</th>
+      <th scope="row">氏名</th>
+      <th scope="row">メールアドレス</th>
     </tr>
   </thead>
 
-  <% @customer.each do |customer| %>
+  <% @customers.each do |customer| %>
   <tbody>
     <tr>
-      <td><%= customer.id %></td>
+      <%= link_to admin_customer_path(@customer.id) do %>
+      <td>
+        <%= customer.id %>
+      </td>
+      <% end %>
       <td><%= customer.last_name %><%= customer.first_name %></td>
       <td><%= customer.email %></td>
     </tr>

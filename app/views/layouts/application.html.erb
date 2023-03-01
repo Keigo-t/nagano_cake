@@ -1,60 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <body>
-    <% if customer_signed_in? %>
-      <p>ロゴ</p>
-      <!--<p>ようこそ、<= @customer.last_name %>さん！</p>-->
-      <li>
-        <%= link_to 'マイページ（まだ飛べないとりあえずトップ）', public_root_path %>
-      </li>
-      <li>
-        <%= link_to '商品一覧（まだ飛べないとりあえずトップ）', public_root_path %>
-      </li>
-      <li>
-        <%= link_to 'カート（まだ飛べないとりあえずトップ）', public_root_path %>
-      </li>
-      <li>
-        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete  %>
-      </li>
-    <% elsif admin_signed_in? %>
-      <p>ロゴ</p>
-      <li>
-        <%= link_to '商品一覧', admin_items_path %>
-      </li>
-      <li>
-        <%= link_to '会員一覧', admin_customers_path %>
-      </li>
-      <li>
-        <%= link_to '注文履歴一覧', admin_top_path %>
-      </li>
-      <li>
-        <%= link_to 'ログアウト', admin_destroy_session_path, method: :delete %>
-      </li>
-    <% else %>
-     <p>ロゴ</p>
-      <li>
-        <%= link_to 'About', public_about_path %>
-      </li>
-      <li>
-        <%= link_to '商品一覧（まだ飛べないとりあえずトップ）', public_root_path %>
-      </li>
-      <li>
-        <%= link_to '新規登録', new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to 'ログイン', new_customer_session_path %>
-      </li>
-    <% end %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-5" href="/">ロゴ</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+              arita-conntrols="navbarNavDropdown" arita-expanded="false" arita="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+
+            <% if customer_signed_in? %>
+              <!--<p>ようこそ、<= @customer.last_name %>さん！</p>-->
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to 'マイページ（まだ）', root_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to '商品一覧', items_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to 'カート（まだ）', root_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete  %>
+                </button>
+              </li>
+              <!--<nav class="navbar navbar-light bg-light">-->
+              <!--  <form class="form-inline">-->
+              <!--    <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+              <!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+              <!--  </form>-->
+              <!--</nav>-->
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to '商品一覧', admin_items_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to '会員一覧', admin_customers_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to '注文履歴一覧', admin_top_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to 'ログアウト', admin_destroy_session_path, method: :delete %>
+                </button>
+              </li>
+              <!--<nav class="navbar navbar-light bg-light">-->
+              <!--  <form class="form-inline">-->
+              <!--    <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+              <!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+              <!--  </form>-->
+              <!--</nav>-->
+            <% else %>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to 'About', about_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to '商品一覧', items_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to '新規登録', new_customer_registration_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  <%= link_to 'ログイン', new_customer_session_path %>
+                </button>
+              </li>
+              <!--<nav class="navbar navbar-light bg-light">-->
+              <!--  <form class="form-inline">-->
+              <!--    <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+              <!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+              <!--  </form>-->
+              <!--</nav>-->
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
-  </body>
 </html>

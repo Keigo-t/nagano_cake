@@ -9,16 +9,16 @@
     </tr>
   </thead>
 
-  <% @customers.each do |customer| %>
+  <% @customers.each do |customers| %>
   <tbody>
     <tr>
-      <%= link_to admin_customer_path(@customer.id) do %>
+      <td><%= customers.id %></td>
       <td>
-        <%= customer.id %>
+        <%= link_to admin_customer_path(customers.id) do %>
+          <%= customers.last_name %><%= customers.first_name %>
+        <% end %>
       </td>
-      <% end %>
-      <td><%= customer.last_name %><%= customer.first_name %></td>
-      <td><%= customer.email %></td>
+      <td><%= customers.email %></td>
     </tr>
   </tbody>
   <% end %>

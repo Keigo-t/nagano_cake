@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'about' => "homes#about"
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
   end

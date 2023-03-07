@@ -14,28 +14,31 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-5" href="/">ロゴ</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-              arita-conntrols="navbarNavDropdown" arita-expanded="false" arita="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <a class="navbar-brand p-5" href="/">LOGO</a>
+          <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"-->
+          <!--    arita-conntrols="navbarNavDropdown" arita-expanded="false" arita="Toggle navigation">-->
+          <!--  <span class="navbar-toggler-icon"></span>-->
+          <!--</button>-->
+
+          <p>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</p>
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
 
             <% if customer_signed_in? %>
               <!--<p>ようこそ、<= @customer.last_name %>さん！</p>-->
               <li class="nav-item">
-                <button type="button" class="btn btn-light">
-                  <%= link_to 'マイページ（まだ）', root_path %>
+                <button type="button" class="btn btn-light mr-5">
+                  <%= link_to 'マイページ', customer_path(current_customer) %>
                 </button>
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-light mr-5">
                   <%= link_to '商品一覧', items_path %>
                 </button>
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-light mr-5">
                   <%= link_to 'カート（まだ）', root_path %>
                 </button>
               </li>

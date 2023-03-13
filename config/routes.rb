@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => "homes#about"
-    resources :customers, only: [:show, :edit, :update]
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/infomation/edit' => 'customers#edit'
+    patch '/customers/infomation' => 'customers#update'
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create,]
+    delete 'cart_items' => 'cart_items#destroy_all'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    get 'top' => 'homes#top'
+    root to: 'homes#top'
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]

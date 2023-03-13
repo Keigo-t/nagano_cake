@@ -1,21 +1,17 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    # customer_id = params[:id].to_i
-    # unless customer_id == current_customer.id
-    #   redirect_to root_path
-    # end
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(customer_params)
-    redirect_to customer_path(@customer.id)
+    redirect_to customers_my_page_path
   end
 
   def unsubscribe

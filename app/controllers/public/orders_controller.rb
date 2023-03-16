@@ -2,7 +2,6 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    # @cart_items =
   end
 
   def index
@@ -18,6 +17,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:payment_method)
   end
 
 end

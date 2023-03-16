@@ -11,6 +11,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_items = CartItem.all
+    @order = Order.new(order_params)
+    if params[:order][:address_number] == "1"
+      # @order.name = current_customer.name
+
   end
 
   def complete

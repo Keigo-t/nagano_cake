@@ -18,8 +18,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(is_deleted: true)
+    reset_session
     redirect_to root_path
   end
 

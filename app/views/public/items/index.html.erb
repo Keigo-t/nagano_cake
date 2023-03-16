@@ -2,8 +2,7 @@
 
 <% @items.each do |item| %>
 
-<!--<= item.image %>-->
-<p>画像</p>
+<%= image_tag item.get_image(60,60) %>
 <%= link_to item_path(item.id) do %>
 <p><%= item.name %></p>
 <% end %>

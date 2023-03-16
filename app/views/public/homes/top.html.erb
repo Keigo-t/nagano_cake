@@ -9,7 +9,7 @@
 
 <% @items.each do |item| %>
 
-<%= image_tag item.image %>
+<%= image_tag item.get_image(80,80) %>
 <%= link_to item_path(item.id) do %>
   <%= item.name %>
 <% end %>

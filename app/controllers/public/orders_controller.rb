@@ -1,6 +1,8 @@
 class Public::OrdersController < ApplicationController
 
   def new
+    @order = Order.new
+    # @cart_items =
   end
 
   def index

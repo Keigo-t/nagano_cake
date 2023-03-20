@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
   def index
+    @customer = current_customer
     @cart_items = CartItem.all
     @total_price = 0
   end

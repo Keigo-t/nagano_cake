@@ -11,15 +11,20 @@
       <th>注文個数</th>
     </tr>
   </thead>
-  <% @order.each do |order| %>
+
   <tbody>
+    <% @order_details.each do |order_detail| %>
     <tr>
-      <td><%= @order.creadet_at %></td>
-      <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
-      <td><%= @order.amount %></td>
+      <td>
+        <%= link_to admin_path(order_detail.id) do %>
+          <%= order_detail.created_at %>
+        <% end %>
+      </td>
+      <td><%= order_detail.order.name %></td>
+      <td><%= order_detail.amount %></td>
     </tr>
+    <% end %>
   </tbody>
-  <% end %>
 </table>
 <!--</div>-->
 <!--</div>-->

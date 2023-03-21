@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    get 'show' => 'orders/show'
+    get '/orders/:id' => 'orders#show'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

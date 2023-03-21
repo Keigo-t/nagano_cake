@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @customer.cart_items.each do |cart_item| %>
+    <% @cart_items.each do |cart_item| %>
     <tr>
       <td><%= cart_item.item.name %></td>
       <td><%= cart_item.item.with_tax_price %></td>
@@ -29,7 +29,7 @@
 
 <p>合計金額</p>
 <% @cart_items.each do |cart_item| %>
-<%= @total_price += cart_item.subtotal %>
+<%= @sum += cart_item.subtotal %>
 <% end %>
 
 

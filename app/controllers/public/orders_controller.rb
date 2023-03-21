@@ -5,9 +5,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order_details = OrderDetail.all
   end
 
   def show
+    @order_detail = OrderDetail.find(params[:id])
+    @order_details = OrderDetail.all
+    @sum = 0
   end
 
   def confirm
@@ -22,7 +26,6 @@ class Public::OrdersController < ApplicationController
 
     elsif params[:order][:address_number]  == "2"
       if Address.exists?(id: params[:order][:address_id])
-        # @order.name = current_customer.name
         @address = Address.find(params[:order][:address_id])
         @order.address = @address.address
         @order.postal_code = @address.postal_code

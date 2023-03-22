@@ -1,11 +1,16 @@
 <%= image_tag @item.get_image(120,120) %>
 <h2><%= @item.name %></h2>
 <h3><%= @item.introduction %></h3>
-<p>￥<%= @item.with_tax_price %>(税込)</p>
+<p>￥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</p>
+
+<%# if customer == current_customer %>
 
 <p>数量を選択して下さい。</p>
 <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
 <%= f.select :amount, *[1..9] %>
-<%= f.submit "カートに入れる", class:"btn btn-success" %>
+
+  <%= f.submit "カートに入れる", class:"btn btn-success" %>
 <% end %>
+<%# else %>
+<%# end %>

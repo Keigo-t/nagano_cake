@@ -1,18 +1,18 @@
 <h4>注文履歴</h4>
 
 <p>購入者</p>
-<%= @order_detail.order.name %>
+<%= @order.name %>
 
 <p>注文日</p>
-<%= @order_detail.created_at %>
+<%= @order.created_at %>
 
 <p>配送先</p>
-<%= @order_detail.order.postal_code %>
-<%= @order_detail.order.address %><br>
-<%= @order_detail.order.name %>
+<%= @order.postal_code %>
+<%= @order.address %><br>
+<%= @order.name %>
 
 <p>支払方法</p>
-<p><%= @order_detail.order.payment_method %></p>
+<p><%= @order.payment_method_i18n %></p>
 
 <table class="table table-bordered">
   <thead>
@@ -25,15 +25,20 @@
   </thead>
 
   <tbody>
-    <% @order_details.each do |order_detail| %>
+    <% @order.order_details.each do |order_detail| %>
     <tr>
       <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.price %></td>
+      <td><%= (order_detail.price * 1.1).floor %></td>
       <td><%= order_detail.amount %></td>
-      <td><%= (order_detail.price * order_detail.amount).floor %></td>
+      <td><%= (order_detail.price * 1.1 *order_detail.amount).floor %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-
+<p>商品合計</p>
+<%#= @order.order_details.total_payment %>
+<p>送料</p>
+<%= @order.shipping_cost %>
+<p>請求金額合計</p>
+<%#= @order.total_payment + @order.shipping_cost %>

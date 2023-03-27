@@ -6,6 +6,7 @@
       <th scope="row">会員ID</th>
       <th scope="row">氏名</th>
       <th scope="row">メールアドレス</th>
+      <th scope="row">ステータス</th>
     </tr>
   </thead>
 
@@ -19,6 +20,7 @@
         <% end %>
       </td>
       <td><%= customers.email %></td>
+      <td><%= customers.is_deleted %></td>
     </tr>
   </tbody>
   <% end %>

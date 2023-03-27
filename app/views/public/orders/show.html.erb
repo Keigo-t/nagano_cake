@@ -14,13 +14,13 @@
   <tbody>
     <tr>
       <tbody>
-        <td><%= @order_detail.created_at %></td>
+        <td><%= @order.created_at %></td>
         <td>
-          〒<%= @order_detail.order.postal_code %><br>
-          <%= @order_detail.order.address %><br>
-          <%= @order_detail.order.name %>
+          〒<%= @order.postal_code %><br>
+          <%= @order.address %><br>
+          <%= @order.name %>
         </td>
-        <td><%= @order_detail.order.payment_method %></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tbody>
     </tr>
   </tbody>
@@ -38,12 +38,16 @@
   </thead>
 
   <tbody>
-    <% @order_details.each do |order_detail| %>
+     <% @order.order_details.each do |order_detail| %>
+
     <tr>
       <td><%= order_detail.item.name %></td>
       <td><%= order_detail.item.price %></td>
       <td><%= order_detail.amount %></td>
-      <td><%= (order_detail.price * 1.1 *order_detail.amount).floor %></td>
+      <td>
+        <%= (order_detail.price * 1.1 *order_detail.amount).floor %>
+        <% @total_price = @sum += (order_detail.price * 1.1 *order_detail.amount).floor %>
+      </td>
     </tr>
     <% end %>
   </tbody>
@@ -63,9 +67,9 @@
 
   <tbody>
     <tr>
-      <td><% @order_detail.order.total_payment %></td>
-      <td><%= @order_detail.order.shipping_cost %></td>
-      <td></td>
+      <td><%= @total_price %></td>
+      <td><%= @order.shipping_cost %></td>
+      <td><%= @order.total_payment %></td>
     </tr>
   </tbody>
 </table>

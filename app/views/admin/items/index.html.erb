@@ -1,6 +1,5 @@
-<div class="jumbotron">
-  <h4>商品一覧</h4>
-</div>
+<h4 class="bg-light d-inline-block m-5">商品一覧</h4>
+
 <%= link_to "+", new_admin_item_path %>
 
 <table class="table">
@@ -22,7 +21,7 @@
           <%= item.name %>
           <% end %>
         </td>
-        <td><%= item.price %></td>
+        <td><%= item.price.to_s(:delimited) %></td>
         <td><%= item.genre.name %></td>
       </tr>
     </tbody>

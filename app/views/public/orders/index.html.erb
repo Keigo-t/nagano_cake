@@ -12,16 +12,20 @@
   </thead>
 
   <tbody>
-    <% @order_details.each do |order_detail| %>
+    <% @orders.each do |order| %>
     <tr>
-      <td><%= order_detail.order.created_at %></td>
+      <td><%= order.created_at %></td>
       <td>
-        <%= order_detail.order.address %><br>
-        <%= order_detail.order.name %>
+        <%= order.address %><br>
+        <%= order.name %>
       </td>
-      <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.order.total_payment %>円</td>
-      <td><%= link_to "表示する", order_path(order_detail.id), class:"btn btn-primary" %></td>
+      <td>
+        <% order.order_details.each do |order_detail| %>
+        <%= order_detail.item.name %>
+        <% end %>
+      </td>
+      <td><%= order.total_payment %>円</td>
+      <td><%= link_to "表示する", order_path(order.id), class:"btn btn-primary" %></td>
     </tr>
     <% end %>
   </tbody>

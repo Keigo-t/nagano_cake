@@ -1,21 +1,21 @@
 class Public::OrdersController < ApplicationController
 
   def new
-    @order = Order.new
+    @order = current_customer.orders.new
   end
 
   def index
-    @order_details = OrderDetail.all
+    @orders = current_customer.orders
+    @sum = 0
   end
 
   def show
-    @order_detail = current_customer.order_details.find(params[:id])
-    @order_details = OrderDetail.all
+    @order = Order.find(params[:id])
     @sum = 0
   end
 
   def confirm
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     @sum = 0
     @order.shipping_cost = 800

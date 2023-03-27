@@ -35,6 +35,11 @@
   <span><%= @customer.email %></span>
 </div>
 
+<div class="field">
+  <span>会員ステータス</span>
+  <span><%= @customer.is_deleted %></span>
+</div>
+
 <br>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success" %>

@@ -32,13 +32,14 @@
       <td><%= order_detail.amount %></td>
       <td><%= (order_detail.price * 1.1 *order_detail.amount).floor %></td>
     </tr>
+    <% @sum += (order_detail.price * 1.1 *order_detail.amount).floor %>
     <% end %>
   </tbody>
 </table>
 
 <p>商品合計</p>
-<%#= @order.order_details.total_payment %>
+<%= @sum %>
 <p>送料</p>
 <%= @order.shipping_cost %>
 <p>請求金額合計</p>
-<%#= @order.total_payment + @order.shipping_cost %>
+<%= @sum + @order.shipping_cost %>

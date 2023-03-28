@@ -37,7 +37,7 @@
 
 <div class="field">
   <span>会員ステータス</span>
-  <span><%= @customer.is_deleted %></span>
+  <span><%= @customer.is_deleted ? '退会' : '有効' %></span>
 </div>
 
 <br>

@@ -69,7 +69,7 @@
     <tr>
       <td><%= @total_price %></td>
       <td><%= @order.shipping_cost %></td>
-      <td><%= @order.total_payment %></td>
+      <td><%= @order.total_payment - @order.shipping_cost %></td>
     </tr>
   </tbody>
 </table>

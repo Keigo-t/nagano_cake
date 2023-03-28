@@ -21,22 +21,33 @@
         <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
         <%= f.hidden_field :amount, :value => cart_item.amount %>
         <%= f.select :amount, *[1..9] %>
-        <%= link_to "変更", cart_item_path(cart_item.id), method: :patch, class:"btn btn-success" %>
+        <%= f.submit "変更", class:"btn btn-success" %>
          <% end %>
       </td>
       <td><%= cart_item.subtotal.to_s(:delimited) %></td>
       <td>
         <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %>
       </td>
+      <td>
+      </td>
+      <% @sum += cart_item.subtotal %>
     </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<p>合計金額</p>
-<% @cart_items.each do |cart_item| %>
-<%= @sum += cart_item.subtotal %>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>合計金額</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @sum.to_s(:delimited) %></td>
+    </tr>
+  </tbody>
+</table>
 
 <% if @cart_items[0] != nil %>
 
